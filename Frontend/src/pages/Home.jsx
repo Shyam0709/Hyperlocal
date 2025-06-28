@@ -93,12 +93,12 @@ const Home = () => {
           <h2 className="text-3xl font-bold text-center mb-10">Popular Services</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {[
-              { title: "Home Cleaning", img: "https://i.imgur.com/FXL9L3s.jpg" },
-              { title: "AC Repair", img: "https://i.imgur.com/YTOuQ2D.jpg" },
-              { title: "Plumbing", img: "https://i.imgur.com/RwA9U3u.jpg" },
-              { title: "Haircut at Home", img: "https://i.imgur.com/bD0EuSk.jpg" },
-              { title: "Pest Control", img: "https://i.imgur.com/v6Sk5KU.jpg" },
-              { title: "Electrician", img: "https://i.imgur.com/fLfuhMl.jpg" },
+              { title: "Home Cleaning", img: "https://www.dirtblastercleaningservices.com/wp-content/uploads/2021/05/Bungalow-Cleaning-Services-Pune.jpg" },
+              { title: "AC Repair", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmHACrGPnZ2UmavsMUmnXafrMg8Nl8M34hMg&s" },
+              { title: "Plumbing", img: "https://www.dirtblastercleaningservices.com/wp-content/uploads/2021/05/Bungalow-Cleaning-Services-Pune.jpg" },
+              { title: "Haircut at Home", img: "https://www.dirtblastercleaningservices.com/wp-content/uploads/2021/05/Bungalow-Cleaning-Services-Pune.jpg" },
+              { title: "Pest Control", img: "https://www.dirtblastercleaningservices.com/wp-content/uploads/2021/05/Bungalow-Cleaning-Services-Pune.jpg" },
+              { title: "Electrician", img: "https://www.dirtblastercleaningservices.com/wp-content/uploads/2021/05/Bungalow-Cleaning-Services-Pune.jpg" },
             ].map((s) => (
               <div key={s.title} className="bg-white rounded shadow hover:shadow-lg transition">
                 <img src={s.img} alt={s.title} className="w-full h-48 object-cover rounded-t" />
