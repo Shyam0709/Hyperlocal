@@ -1,9 +1,10 @@
 import express, { Router } from 'express';
-import { login, register } from '../controllers/authController.js';
+import { login, requestOtp, verifyOtpAndRegister } from '../controllers/authController.js';
 
 const router = Router();
 
-router.post('/register', register);
+router.post('/request-otp',requestOtp);
+router.post('/verify-otp',verifyOtpAndRegister);
 router.post('/login', login);
 
 export default router;

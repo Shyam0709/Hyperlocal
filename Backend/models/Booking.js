@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const BookingSchema = new mongoose.Schema({
     serviceId: { type: mongoose.Schema.Types.ObjectId, ref: 'Service', required: true },
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true },
-    providerId: { type: mongoose.Schema.Types.ObjectId, ref: 'provider', required: true },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    providerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     date: { type: Date, required: true },
     timeSlot: { type: String, required: true }, 
     address : { type: String, required: true },

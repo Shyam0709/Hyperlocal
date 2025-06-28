@@ -1,35 +1,49 @@
 import Booking from '../models/Booking.js';
 
-export const createBooking = async(req,res)=>{
-    const { serviceId, date, address } = req.body;
-    try {
-        const book = await Booking.create({
-            serviceId,
-            userId: req.user._id, 
-            providerId: req.body.providerId, 
-            date,
-            timeSlot: req.body.timeSlot, 
-            address
-        });
+export const createBooking = async (req, res) => {
+  const { serviceId, providerId, date, timeSlot, address } = req.body;
+
+  try {
+    const book = await Booking.create({
+      serviceId,
+      userId: req.user._id, // From the authenticate middleware
+      providerId,
+      date,
+      timeSlot,
+      address,
+    });
+
+    // ✅ Send success response
+    res.status(201).json(book);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 
 
-    } catch (error) {
-        res.status(400).json({ message: error.message });
-        
-    }
-}
 
 export const getBookings = async (req, res) => {
-    try {
-        const bookings = await Booking.find({ _id: req.user._id })
-            .populate('serviceId')
-            .populate('providerId', 'username');
-        
-        res.status(200).json(bookings);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+  try {
+    let filter = {};
+    if (req.user.role === 'user') {
+      filter = { userId: req.user._id };
+    } else if (req.user.role === 'provider') {
+      filter = { providerId: req.user._id };
     }
-}   
+
+    const bookings = await Booking.find(filter)
+      .populate('serviceId')
+      .populate('userId', 'name email')
+      .populate('providerId', 'username email');
+    
+
+    console.log("Bookings fetched for:", req.user.role, req.user._id);
+    res.status(200).json(bookings);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+ 
 
 export const updateBookingstatus = async(req,res)=>{
   try {

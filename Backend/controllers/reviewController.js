@@ -21,7 +21,7 @@ console.log("JWT user id:", userId);
     }
 
     // ✅ use correct field: userId
-    if (!b.userId || b.userId.toString() !== userId) {
+    if (!b.userId || b.userId.toString() !== userId.toString()) {
       return res.status(403).json({ message: 'Booking does not belong to user' });
     }
 

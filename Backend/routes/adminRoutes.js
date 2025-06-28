@@ -1,6 +1,6 @@
 import express from 'express';
 import Service from '../models/Service.js';
-
+import User from '../models/User.js';
 const router = express.Router();
 
 import {
@@ -15,6 +15,15 @@ import {
 
 import authenticate from '../middleware/authMiddleware.js';
 import isAdmin from '../middleware/isAdmin.js';
+
+router.get('/users', authenticate, isAdmin, async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to fetch users" });
+  }
+});
 
 // Service management
 router.post('/services', authenticate, isAdmin, createService);
